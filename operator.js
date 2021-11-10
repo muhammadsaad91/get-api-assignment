@@ -6,7 +6,7 @@ function post_create()
     let age = document.getElementById('age').value;
     let roll_no = document.getElementById('roll_no').value;
 
-    axios.post('https://pacific-coast-71393.herokuapp.com/user', {
+    axios.post('https://muhammadsaad.herokuapp.com/user', {
         student_name: student_name,father_name:father_name
         ,age:age,roll_no:roll_no
           })
@@ -25,7 +25,7 @@ function post_create()
 }
 
 function get_all(){
-    axios.get('https://pacific-coast-71393.herokuapp.com/users')
+    axios.get('https://muhammadsaad.herokuapp.com/users')
   .then(function (response) {
       $html='';
     console.log(response);
@@ -78,7 +78,7 @@ function update_student(){
   let roll_no = document.getElementById('roll_no').value;
 
   let id = document.getElementById('student_id').value;
-  axios.put('https://pacific-coast-71393.herokuapp.com/user/'+id, {
+  axios.put('https://muhammadsaad.herokuapp.com/user/'+id, {
     student_name: student_name,father_name:father_name
     ,age:age,roll_no:roll_no
 })
@@ -93,7 +93,7 @@ function update_student(){
 }
 function delete_student(){
     let id = document.getElementById('student_id').value;
-    axios.delete('https://pacific-coast-71393.herokuapp.com/user/'+id)
+    axios.delete('https://muhammadsaad.herokuapp.com/user/'+id)
   .then(function (response) {
     console.log(response);
     alert(response.data)
@@ -106,26 +106,4 @@ function delete_student(){
   .then(function () {
     // always executed
   });    
-}
-
-$(function() {
-  get_city();
-});
-
-function get_city(){
-  axios.post('https://countriesnow.space/api/v0.1/countries/cities', {
-    "country": "pakistan"
-      })
-  .then(function (response) {
-    console.log(response);
-    $html = '<option value="">Select City</option>';
-    response.data.data.forEach(function(data) {
-      $html += '<option value="'+data+'">'+data+'</option>'
-    })
-    document.getElementById('city_id').innerHTML = $html;
-
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 }
